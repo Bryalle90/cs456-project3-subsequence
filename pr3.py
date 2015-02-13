@@ -1,9 +1,9 @@
 # Student: Bryan Allen
 # Class: CS456 Spring 2015
-# Assignment: Project 2
-# Required Files: alphabet.txt
-# To Run: navigate to folder containing pr2.py in console/terminal and enter: python pr2.py
+# Assignment: Project 3
+# To Run: navigate to folder containing pr3.py in console/terminal and enter: python pr3.py
 
+import re
 class Node:
 	def __init__(self, score=None, dir=None, prev=None):
 		self.score = score
@@ -22,11 +22,16 @@ def getScore(x, y):
 		
 def buildOpt(x, y):
 	if matrix[x][y].prev == None:
-		return matrix[x][y].dir
+		return matrix[x][y].dir, matrix[x][y].score
 	else:
-		t = matrix[x][y].dir
-		t += buildOpt(matrix[x][y].prev[0], matrix[x][y].prev[1])
-	return t
+		d = matrix[x][y].dir
+		score = matrix[x][y].score
+		
+		t, s = buildOpt(matrix[x][y].prev[0], matrix[x][y].prev[1])
+		
+		d = t + d
+		score += s
+	return d, score
 
 if __name__ == "__main__":
 	MATCH = 2
