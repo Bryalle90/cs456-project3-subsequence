@@ -22,7 +22,12 @@ def getScore(x, y):
 		return DIFFERENT
 		
 def buildOpt(x, y):
-	pass
+	if matrix[x][y].prev == None:
+		return matrix[x][y].dir
+	else:
+		t = matrix[x][y].dir
+		t += buildOpt(matrix[x][y].prev[0], matrix[x][y].prev[1])
+	return t
 
 if __name__ == "__main__":
 	MATCH = 2
@@ -68,8 +73,8 @@ if __name__ == "__main__":
 				prev = [i, j-1]
 			matrix[i][j] = Node(fullScore, dir, prev)
 			
-	print matrix[len(s1)][len(s2)].score, matrix[len(s1)][len(s2)].dir, matrix[len(s1)][len(s2)].prev
-			
+	#print matrix[len(s1)][len(s2)].score, matrix[len(s1)][len(s2)].dir, matrix[len(s1)][len(s2)].prev
+	print buildOpt(len(s1), len(s2))
 			
 			
 			
