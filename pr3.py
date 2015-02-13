@@ -77,26 +77,32 @@ if __name__ == "__main__":
 				prev = [i, j-1]
 			matrix[i][j] = Node(fullScore, dir, prev)
 			
-	#print matrix[len(s1)][len(s2)].score, matrix[len(s1)][len(s2)].dir, matrix[len(s1)][len(s2)].prev
-	opt = buildOpt(len(s1), len(s2))
-	print opt
+	# build optimal sequence
+	opt, totalScore = buildOpt(len(s1), len(s2))
+	
+	# print optimal sequence and total score
+	print ''
+	print 'optimal sequence:', opt
+	print 'total score:', totalScore
+	print ''
+	
+	# print optimal strings
 	opts1 = ''
 	opts2 = ''
-	
 	k = 0
 	for l in opt:
-		if l == 'D' or l == 'H':
+		if l == 'V':
+			opts1 += '_'
+		else:
 			opts1 += s1[k]
 			k += 1
-		elif l == 'V':
-			opts1 += '_'
 	k = 0
 	for l in opt:
-		if l == 'D' or l == 'V':
+		if l == 'H':
+			opts2 += '_'
+		else:
 			opts2 += s2[k]
 			k += 1
-		elif l == 'H':
-			opts2 += '_'
 	print opts1
 	print opts2
 			
