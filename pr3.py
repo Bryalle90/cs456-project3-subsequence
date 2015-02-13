@@ -4,7 +4,6 @@
 # Required Files: alphabet.txt
 # To Run: navigate to folder containing pr2.py in console/terminal and enter: python pr2.py
 
-import os, sys
 class Node:
 	def __init__(self, score=None, dir=None, prev=None):
 		self.score = score
@@ -16,7 +15,7 @@ def getScore(x, y):
 		return MATCH
 	elif x in VOWELS and y in VOWELS:
 		return SIMILAR
-	elif [x, y] in PAIRS:
+	elif [x, y] in PAIRS or [y, x] in PAIRS:
 		return SIMILAR
 	else:
 		return DIFFERENT
@@ -40,7 +39,7 @@ if __name__ == "__main__":
 	# get input
 	#s1 = raw_input('string 1: ')
 	#s2 = raw_input('string 2: ')
-	s1 = 'select'
+	s1 = 'selgect'
 	s2 = 'salekt'
 	
 	# create matrix
