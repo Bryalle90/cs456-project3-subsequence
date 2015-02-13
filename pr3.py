@@ -22,7 +22,7 @@ def getScore(x, y):
 		return DIFFERENT
 		
 def buildOpt(x, y):
-	
+	pass
 
 if __name__ == "__main__":
 	MATCH = 2
@@ -35,7 +35,7 @@ if __name__ == "__main__":
 	# get input
 	#s1 = raw_input('string 1: ')
 	#s2 = raw_input('string 2: ')
-	s1 = 'selects'
+	s1 = 'select'
 	s2 = 'salekt'
 	
 	# create matrix
@@ -43,9 +43,9 @@ if __name__ == "__main__":
 	
 	# initialize
 	matrix[0][0] = Node(0, '', None)
-	for i in range(1, len(s1)):
+	for i in range(1, len(s1)+1):
 		matrix[i][0] = Node(i*GAP, 'H', [i-1, 0])
-	for j in range(1, len(s1)):
+	for j in range(1, len(s2)+1):
 		matrix[0][j] = Node(j*GAP, 'V', [0, j-1])
 		
 	# build
@@ -68,7 +68,7 @@ if __name__ == "__main__":
 				prev = [i, j-1]
 			matrix[i][j] = Node(fullScore, dir, prev)
 			
-			
+	print matrix[len(s1)][len(s2)].score, matrix[len(s1)][len(s2)].dir, matrix[len(s1)][len(s2)].prev
 			
 			
 			
